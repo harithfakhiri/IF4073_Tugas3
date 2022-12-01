@@ -90,7 +90,13 @@ def nms(Labels, iou_threshold=0.5):
             SelectedLabels.append(label)
     return SelectedLabels
 
-
+def interval_mapping(image, from_min, from_max, to_min, to_max):
+    # map values from [from_min, from_max] to [to_min, to_max]
+    # image: input array
+    from_range = from_max - from_min
+    to_range = to_max - to_min
+    scaled = np.array((image - from_min) / float(from_range), dtype=float)
+    return to_min + (scaled * to_range)
 
 def find_T_matrix(pts, t_pts):
     A = np.zeros((8, 9))
