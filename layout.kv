@@ -1,0 +1,31 @@
+<MyLayout>
+	
+	FloatLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+		
+		# padding: 50
+		# spacing: 20
+
+		# Image:
+		# 	source: 'dataset/plate5.jpeg'
+		# 	allow_stretch: True
+		# 	keep_ratio: True
+
+        Button:
+            text: "Browse Image"
+            size: 200, 20
+            on_press: root.select_file()
+            pos: 10, 10
+            size_hint: None, None
+        
+        Label:
+            id: selected_path
+            text: "Please upload an image"
+            pos: -100, -280
+            color: 1,0,1,1
+            halign: 'left'
+
+
+		#Button:
+		#	text: "Hello World!"
