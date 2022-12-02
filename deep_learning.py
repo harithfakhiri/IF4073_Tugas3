@@ -30,12 +30,17 @@ def preprocess_image(image_path,resize=False):
     return img
 
 def get_plate(image_path, wpod_net, Dmax=608, Dmin = 608):
-    vehicle = preprocess_image(image_path)
-    ratio = float(max(vehicle.shape[:2])) / min(vehicle.shape[:2])
-    side = int(ratio * Dmin)
-    bound_dim = min(side, Dmax)
-    _ , LpImg, _, cor = detect_lp(wpod_net, vehicle, bound_dim, lp_threshold=0.5)
-    return vehicle, LpImg, cor
+    try:
+
+        vehicle = preprocess_image(image_path)
+        ratio = float(max(vehicle.shape[:2])) / min(vehicle.shape[:2])
+        side = int(ratio * Dmin)
+        bound_dim = min(side, Dmax)
+        _ , LpImg, _, cor = detect_lp(wpod_net, vehicle, bound_dim, lp_threshold=0.5)
+        return vehicle, LpImg, cor, ""
+    except AssertionError:
+        z = list()
+        return vehicle, z, z, "Plate Number not Detected!"
 
 def interval_mapping(image, from_min, from_max, to_min, to_max):
     # map values from [from_min, from_max] to [to_min, to_max]
@@ -50,7 +55,10 @@ def plate_recognitionCNN(file):
     wpod_net = load_model(wpod_net_path)
 
     test_image_path = file
-    vehicle, LpImg, cor = get_plate(test_image_path, wpod_net)
+    vehicle, LpImg, cor, msg = get_plate(test_image_path, wpod_net)
+    if msg != "" :
+        notDetected = cv2.imread("./dataset/not_detected.jpg")
+        return notDetected, msg
 
     # fig = plt.figure(figsize=(12,6))
     # grid = gridspec.GridSpec(ncols=2,nrows=1,figure=fig)
