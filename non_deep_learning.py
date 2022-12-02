@@ -23,7 +23,8 @@ def find_contours(edged):
                                             cv2.CHAIN_APPROX_SIMPLE)
     contours = imutils.grab_contours(contours)
     contours = sorted(contours,key=cv2.contourArea, reverse = True)[:10]
-    screenCnt = None
+    screenCnt = 0
+    detected = 0
 
     for c in contours:     
         peri = cv2.arcLength(c, True)
@@ -31,9 +32,10 @@ def find_contours(edged):
 
         if len(approx) == 4:
             screenCnt = approx
+            detected = 1
             break
-
-    return screenCnt
+        
+    return screenCnt, detected
 
 def create_mask_image(img, gray, screenCnt):
     mask = np.zeros(gray.shape,np.uint8)
@@ -57,17 +59,26 @@ def read_plate_number(mask, img):
 def plate_recognition(file):
     img, edged, gray = preprocess_img(file)
 
-    screenCnt = find_contours(edged)
+    screenCnt, detected = find_contours(edged)
 
-    if (screenCnt.all()):
+    if (detected == 1):
 
         mask = create_mask_image(img, gray, screenCnt)
 
         result, Cropped = read_plate_number(mask, img)
+        finalResult = ""
 
-        return img, Cropped, result
+        for i in range (len(result)):
+            finalResult += result[i][1]
+            if i == 2:
+                break
+
+        img = imutils.resize(img, width=250)
+
+        return Cropped, finalResult
     
-    return None
+    notDetected = cv2.imread("./dataset/not_detected.jpg")
+    return notDetected, "Plate Number not Detected!"
             
 
 

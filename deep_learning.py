@@ -15,6 +15,7 @@ import glob
 import easyocr
 import pytesseract
 from PIL import Image
+import imutils
 
 
 def load_model(path):
@@ -53,7 +54,7 @@ def interval_mapping(image, from_min, from_max, to_min, to_max):
     scaled = np.array((image - from_min) / float(from_range), dtype=float)
     return to_min + (scaled * to_range)
 
-def plate_recognition(file):
+def plate_recognitionCNN(file):
     wpod_net_path = "./models/wpod-net.json"
     wpod_net = load_model(wpod_net_path)
 
@@ -74,6 +75,14 @@ def plate_recognition(file):
 
     reader = easyocr.Reader(['en'])
     result = reader.readtext(np.uint8(img))
+
+    finalResult = ""
+
+    for i in range (len(result)):
+        finalResult += result[i][1]
+        if i == 2:
+            break
     
-    return LpImg[0], result
+    img = imutils.resize(np.uint8(img), width=250)
+    return img, finalResult
     
