@@ -1,0 +1,7 @@
+opencv-contrib-python
+imutils
+pyqt5
+pyqt5-tools
+numpy
+easyocr
+tensorflow
