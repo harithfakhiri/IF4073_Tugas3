@@ -1,13 +1,9 @@
-from skimage.segmentation import clear_border
 from local_utils import interval_mapping
-import matplotlib.pyplot as plt
 # import pytesseract
 import numpy as np
 import imutils
 import cv2
 import easyocr
-import matplotlib.gridspec as gridspec
-from skimage import color
 
 def preprocess_img(file):
     img = cv2.imread(file)
@@ -34,7 +30,7 @@ def find_contours(edged):
             screenCnt = approx
             detected = 1
             break
-        
+
     return screenCnt, detected
 
 def create_mask_image(img, gray, screenCnt):

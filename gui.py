@@ -29,7 +29,7 @@ class UI(QMainWindow):
 
 	def clicker(self):
 		fname = QFileDialog.getOpenFileName(
-			self, "Open File", "c:\\gui\\images", "All Files (*);;PNG Files (*.png);;Jpg Files (*.jpg)")
+			self, "Open File", "./", "All Files (*);;PNG Files (*.png);;Jpg Files (*.jpg)")
 
 		if fname:
 			self.pixmap = QPixmap(fname[0])

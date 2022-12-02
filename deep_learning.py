@@ -2,19 +2,10 @@ import tensorflow as tf
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
 from local_utils import detect_lp
 from os.path import splitext,basename
 from tensorflow.keras.models  import model_from_json
-from tensorflow.keras.utils import load_img, img_to_array
-from keras.applications.mobilenet_v2 import preprocess_input
-from sklearn.preprocessing import LabelEncoder
-from tensorflow import keras
-import glob
 import easyocr
-import pytesseract
-from PIL import Image
 import imutils
 
 
@@ -82,6 +73,9 @@ def plate_recognitionCNN(file):
         finalResult += result[i][1]
         if i == 2:
             break
+    
+    if (finalResult == ""):
+        finalResult = "Plate Number not Detected!"
     
     img = imutils.resize(np.uint8(img), width=250)
     return img, finalResult
