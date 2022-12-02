@@ -55,15 +55,19 @@ def read_plate_number(mask, img):
     return result, Cropped
 
 def plate_recognition(file):
-    img, gray, edged = preprocess_img(file)
+    img, edged, gray = preprocess_img(file)
 
     screenCnt = find_contours(edged)
 
-    mask = create_mask_image(img, gray, screenCnt)
+    if (screenCnt.all()):
 
-    result, Cropped = read_plate_number(mask, img)
+        mask = create_mask_image(img, gray, screenCnt)
 
-    return img, Cropped, result
+        result, Cropped = read_plate_number(mask, img)
+
+        return img, Cropped, result
+    
+    return None
             
 
 
