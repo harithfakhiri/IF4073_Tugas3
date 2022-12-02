@@ -37,7 +37,7 @@ def preprocess_image(image_path,resize=False):
         img = cv2.resize(img, (224,224))
     return img
 
-def get_plate(image_path, Dmax=608, Dmin = 608):
+def get_plate(image_path, wpod_net, Dmax=608, Dmin = 608):
     vehicle = preprocess_image(image_path)
     ratio = float(max(vehicle.shape[:2])) / min(vehicle.shape[:2])
     side = int(ratio * Dmin)
@@ -57,8 +57,8 @@ def plate_recognition(file):
     wpod_net_path = "./models/wpod-net.json"
     wpod_net = load_model(wpod_net_path)
 
-    test_image_path = "dataset/plate6.jpg"
-    vehicle, LpImg, cor = get_plate(test_image_path)
+    test_image_path = file
+    vehicle, LpImg, cor = get_plate(test_image_path, wpod_net)
 
     # fig = plt.figure(figsize=(12,6))
     # grid = gridspec.GridSpec(ncols=2,nrows=1,figure=fig)
