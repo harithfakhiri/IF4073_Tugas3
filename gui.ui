@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1356</width>
-    <height>723</height>
+    <height>674</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>640</y>
+      <y>590</y>
       <width>401</width>
       <height>41</height>
      </rect>
@@ -33,8 +33,8 @@
    <widget class="QLabel" name="label__inputImg">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>280</y>
+      <x>20</x>
+      <y>180</y>
       <width>361</width>
       <height>301</height>
      </rect>
@@ -49,8 +49,8 @@
    <widget class="QLabel" name="label__outputImgCNN">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>280</y>
+      <x>480</x>
+      <y>190</y>
       <width>361</width>
       <height>301</height>
      </rect>
@@ -65,8 +65,8 @@
    <widget class="QLabel" name="label__outputImgManual">
     <property name="geometry">
      <rect>
-      <x>960</x>
-      <y>280</y>
+      <x>970</x>
+      <y>170</y>
       <width>361</width>
       <height>301</height>
      </rect>
@@ -82,7 +82,7 @@
     <property name="geometry">
      <rect>
       <x>430</x>
-      <y>650</y>
+      <y>600</y>
       <width>821</width>
       <height>16</height>
      </rect>
@@ -94,11 +94,16 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>580</y>
-      <width>81</width>
+      <x>30</x>
+      <y>520</y>
+      <width>151</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>CNN OCR Result:</string>
@@ -107,11 +112,16 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>610</y>
-      <width>101</width>
+      <x>30</x>
+      <y>550</y>
+      <width>171</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Manual OCR Result:</string>
@@ -120,11 +130,16 @@
    <widget class="QLabel" name="label__cnnOCR">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>580</y>
+      <x>180</x>
+      <y>520</y>
       <width>241</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>...</string>
@@ -133,11 +148,16 @@
    <widget class="QLabel" name="label__manualOCR">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>610</y>
+      <x>200</x>
+      <y>550</y>
       <width>251</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>...</string>
@@ -146,8 +166,8 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>250</y>
+      <x>140</x>
+      <y>140</y>
       <width>131</width>
       <height>31</height>
      </rect>
@@ -166,8 +186,8 @@
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>240</y>
+      <x>570</x>
+      <y>140</y>
       <width>181</width>
       <height>31</height>
      </rect>
@@ -186,8 +206,8 @@
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>960</x>
-      <y>240</y>
+      <x>1050</x>
+      <y>130</y>
       <width>201</width>
       <height>31</height>
      </rect>
